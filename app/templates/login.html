@@ -1,34 +1,52 @@
-<!-- extend base layout -->
-{% extends "base.html" %}
+<html>
+  <head>
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+      <link href="/static/css/bootstrap-responsive.min.css" rel="stylesheet">
+      <script src="http://code.jquery.com/jquery-latest.js"></script>
+      <script src="/static/js/bootstrap.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+      <link href="/static/css/login.css" rel="stylesheet">
+      <title>Welcome to LuConnect</title>
+      <h1 class = login-text style="margin-top: 30px" >Lu Connect</h1>
+      <hr size= "5">
+  </head>
+  <body>
+  <div class = container id = "login-page">
+      <p class = login-text>Connect with other Lincoln University Students when you need to...</p><br>
+      <ul>
+          <li>Sell your items</li>
+          <li>Find a ride &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+          <li>Offer a service</li>
+      </ul>
 
-{% block content %}
-<script type="text/javascript">
-function set_openid(openid, pr)
-{
-    u = openid.search('<username>')
-    if (u != -1) {
-        // openid requires username
-        user = prompt('Enter your ' + pr + ' username:')
-        openid = openid.substr(0, u) + user
-    }
-    form = document.forms['login'];
-    form.elements['openid'].value = openid
-}
-</script>
-<h1>Sign In</h1>
-<form action="" method="post" name="login">
-    {{ form.hidden_tag() }}
-    <p>
-        Please enter your OpenID, or select one of the providers below:<br>
-        {{ form.openid(size=80) }}
-        {% for error in form.openid.errors %}
+      {% block content %}
+  <form action="" method="post" name="login">
+      <p>{{ form.email(placeholder="Lincoln email")}}<br>
+        {% for error in form.email.errors %}
           <span style="color: red;">[{{error}}]</span>
         {% endfor %}<br>
-        |{% for pr in providers %}
-          <a href="javascript:set_openid('{{ pr.url }}', '{{ pr.name }}');">{{ pr.name }}</a> |
-        {% endfor %}
-    </p>
-    <p>{{ form.remember_me }} Remember Me</p>
-    <p><input type="submit" value="Sign In"></p>
-</form>
+      {{ form.student_id(placeholder="Student id number")}}<br>
+        {% for error in form.student_id.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+      {{ form.password(placeholder="Password")}}<br>
+        {% for error in form.password.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+      {{ form.confirm(placeholder="Confirm password")}}<br>
+        {% for error in form.confirm.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+          {{ form.remember_me }} Remember Me</p>
+      <button type = "submit" name = "register" id ="register">Register</button>
+      <button type = "submit" name ="logIn" id = "login">Log in</button>
+  </form>
 {% endblock %}
+  </div>
+  <hr size= "5">
+
+  <p id="comments">Comments/Issues/Suggestions?</p>
+
+  </body>
+</html>
