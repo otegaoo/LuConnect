@@ -10,6 +10,8 @@
       <title>Welcome to LuConnect</title>
       <h1 class = login-text style="margin-top: 30px" >Lu Connect</h1>
       <hr size= "5">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="/static/js/custom.js"></script>
   </head>
   <body>
   <div class = container id = "login-page">
@@ -21,13 +23,22 @@
       </ul>
 
       {% block content %}
+      {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+            <div class="message_flash">{{ message }}</div>
+        {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
   <form action="" method="post" name="login">
-      <p>{{ form.email(placeholder="Lincoln email")}}<br>
-        {% for error in form.email.errors %}
+      <p>{{ form.lincoln_email(placeholder="Lincoln email")}}<br>
+        {% for error in form.lincoln_email.errors %}
           <span style="color: red;">[{{error}}]</span>
         {% endfor %}<br>
-      {{ form.student_id(placeholder="Student id number")}}<br>
-        {% for error in form.student_id.errors %}
+      {{ form.lincoln_id(placeholder="Student id number")}}<br>
+        {% for error in form.lincoln_id.errors %}
           <span style="color: red;">[{{error}}]</span>
         {% endfor %}<br>
       {{ form.password(placeholder="Password")}}<br>
@@ -39,8 +50,8 @@
           <span style="color: red;">[{{error}}]</span>
         {% endfor %}<br>
           {{ form.remember_me }} Remember Me</p>
-      <button type = "submit" name = "register" id ="register">Register</button>
-      <button type = "submit" name ="logIn" id = "login">Log in</button>
+      <button type = "submit" name = "btn" id ="register" value="register">Register</button>
+      <button type = "submit" name ="btn" id = "login" value="login">Log in</button>
   </form>
 {% endblock %}
   </div>

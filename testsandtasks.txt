@@ -1,0 +1,19 @@
+test cases to be written:
+/login
+    user put data in fields
+
+
+    register button
+        user is not None
+        email address is not registered
+        lincoln_id is valid
+
+    login button
+        user is not None
+        user is registered
+
+tasks to be added:
+    database code that adds time user got registered.
+    when user tries to re-register an email address, alert message should be red.
+    javascript to hide register button when user wants to sign in and vice versa.
+    functionality of remember me button.

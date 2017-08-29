@@ -3,8 +3,19 @@
     {% if title %}
     <title>{{ title }} - microblog</title>
     {% else %}
-    <title>Welcome to microblog</title>
+    <title>LuConnect</title>
     {% endif %}
+
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+      <link href="/static/css/bootstrap.css" rel="stylesheet">
+      <script src="http://code.jquery.com/jquery-latest.js"></script>
+      <script src="/static/js/bootstrap.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="/static/css/login.css" rel="stylesheet">
+      <h1 class = login-text style="margin-top: 30px" >Lu Connect</h1>
+      <hr size= "5">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="/static/js/custom.js"></script>
   </head>
   <body>
     <div>Microblog: <a href="/index">Home</a></div>
@@ -12,3 +23,62 @@
     {% block content %}{% endblock %}
   </body>
 </html>
+
+
+<!--<html>
+  <head>
+      <link href="/static/css/bootstrap.min.css" rel="stylesheet" media="screen">
+      <link href="/static/css/bootstrap.css" rel="stylesheet">
+      <script src="http://code.jquery.com/jquery-latest.js"></script>
+      <script src="/static/js/bootstrap.min.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link href="/static/css/login.css" rel="stylesheet">
+      <title>Welcome to LuConnect</title>
+      <h1 class = login-text style="margin-top: 30px" >Lu Connect</h1>
+      <hr size= "5">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+      <script src="/static/js/custom.js"></script>
+  </head>
+  <body>
+  <div class = container id = "login-page">
+
+      {% block content %}
+      {% with messages = get_flashed_messages() %}
+  {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+            <div class="message_flash">{{ message }}</div>
+        {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}
+  <form action="" method="post" name="login">
+      <p>{{ form.lincoln_email(placeholder="Lincoln email")}}<br>
+        {% for error in form.lincoln_email.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+      {{ form.lincoln_id(placeholder="Student id number")}}<br>
+        {% for error in form.lincoln_id.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+      {{ form.password(placeholder="Password")}}<br>
+        {% for error in form.password.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+      {{ form.confirm(placeholder="Confirm password")}}<br>
+        {% for error in form.confirm.errors %}
+          <span style="color: red;">[{{error}}]</span>
+        {% endfor %}<br>
+          {{ form.remember_me }} Remember Me</p>
+      <button type = "submit" name = "btn" id ="register" value="register">Register</button>
+      <button type = "submit" name ="btn" id = "login" value="login">Log in</button>
+  </form>
+{% endblock %}
+  </div>
+  <hr size= "5">
+
+  <p id="comments">Comments/Issues/Suggestions?</p>
+
+  </body>
+</html>
+-->
